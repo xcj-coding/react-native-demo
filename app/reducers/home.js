@@ -12,7 +12,7 @@ const Home = (state = MgInitState,action)=>{
             console.log(123);
             console.log(state);
             console.log(action.data);
-            state = state.mergeIn(['printHello'],action.data);
+            // state = state.mergeIn(['printHello'],action.data);
             return state;
         case "YYY" :
             state = state.mergeIn(['YYY'],action.data);
