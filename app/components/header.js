@@ -30,7 +30,7 @@ class Header extends Component {
 					<TextInput
 						style={[styles.searchPlaceholder,{ width: 100,  borderColor: 'gray', borderWidth: 1 }]}
 						onChangeText={(text) => this.setState({ text })}
-						placeholder={this.state}
+						placeholder={this.state.text}
 						value={this.state.text}
 						/>
 				</TouchableOpacity>
