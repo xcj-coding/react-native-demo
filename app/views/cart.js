@@ -1,16 +1,23 @@
-import React, {Component} from 'react';
-import {View,ScrollView,StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { View, ScrollView, Text, TouchableOpacity, StyleSheet } from 'react-native';
+
+import * as CartAction  from '../actions/cartAction';
 
 import Header from '../components/header';
 import ListItem from '../components/listItem';
 import HotGoods from '../components/hotGoods';
 
 class Cart extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props)
 		console.log(this.props);
 	}
-	render(){
+	cartTest(data){
+		this.props.cartTest(data)
+	}
+	render() {
 		let hotGoodsArray = [
 			{
 				name: '热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1热门商品1',
@@ -30,20 +37,43 @@ class Cart extends Component {
 			},
 		]
 		return (
-			<ScrollView style={{flex: 1}}>
+			<ScrollView style={{ flex: 1 }}>
 				<Header />
 				<ListItem title="第一条商品" />
 				<ListItem title="第一条商品" />
 				<HotGoods hotGoods={hotGoodsArray} />
+
+				<TouchableOpacity onPress={() => { this.cartTest('传入一个数据流到cart') } }>
+					<Text>Test reducer</Text>
+				</TouchableOpacity>
+				<Text>{this.props.test}</Text>
 			</ScrollView>
 		)
 	}
 }
 
-export default Cart;
 
 const styles = StyleSheet.create({
 	flex: {
 		flex: 1
 	}
 })
+
+
+function mapStateToProps(state) {
+	let test = state.CartRD.get('test');
+	return {
+		test: test
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		cartTest: bindActionCreators(CartAction.cartTest, dispatch),
+	};
+}
+
+
+Cart = connect(mapStateToProps, mapDispatchToProps)(Cart)
+
+export default Cart;

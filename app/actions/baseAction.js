@@ -11,26 +11,9 @@ export const loadingTip = (data) => {
 	}
 }
 export const ajaxFailed = (data) => {
-	let a = !data;
+	let data = !data;
 	return {
 		type: 'AJAXFAILED',
-		a
-		// data
-	}
-}
-
-
-/*   holiday begin   */
-export const xxx = (data) => {
-	return {
-		type: 'printHello',
 		data
 	}
 }
-export const yyy = (data) => {
-	return {
-		type: 'YYY',
-		data
-	}
-}
-/*   holiday end   */

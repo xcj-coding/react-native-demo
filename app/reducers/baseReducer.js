@@ -1,6 +1,6 @@
 import Immutable,{List,Map,fromJS} from 'immutable';
 
-const MgInitState = fromJS({
+const DYInitState = fromJS({
     LOGINSTATE: false,
     LOADINGTIP: true,
     AJAXFAILED: false,
@@ -12,7 +12,7 @@ const MgInitState = fromJS({
     HOLIDAY: {},
 });
 
-const RDcount = (state = MgInitState,action)=>{
+const BaseRD = (state = DYInitState,action)=>{
     switch(action.type){
         case "LOGINSTATE" : // 登录状态
             state = state.mergeIn(['LOGINSTATE'],action.data);
@@ -28,4 +28,4 @@ const RDcount = (state = MgInitState,action)=>{
     }
 }
 
-export default RDcount;
+export default BaseRD;

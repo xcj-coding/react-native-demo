@@ -1,26 +1,37 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
-// import configureStore from './store/configure-store'
+
+
 import {createStore,applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
-import Reducers from './reducers/index';
-import * as DYAction  from './actions/index';
+import DYReducers from './reducers/rootReducer';
 
 import Root from './root'
 import DYglobal from './DYglobal'
+
 console.log(DYglobal.a)
-// const store = configureStore();
+
+// const perflogger = store => next => action => {
+//   console.log( '%c Dispatching ', 'background: #222; color: #bada55', action );
+//   const start = performance.now();
+//   const result = next( action );
+//   const end = performance.now();
+//   console.log( `%c Action with type "${action.type}" took ${( end-start ).toFixed( 2 )} milliseconds.`, 'background: #bada55; color: #222' );
+//   return result;
+// }
 
 const logger = createLogger();
 
-const createStoreWithMiddleware = applyMiddleware(thunk,logger)(createStore);
+const createStoreWithMiddleware = applyMiddleware(logger,thunk)(createStore);
 
-const store = createStore(Reducers);
+const store = createStore(DYReducers);
 
 console.log(store);
 console.log(store.getState());
+
+// import * as DYAction  from './actions/index';
 // console.log(DYAction.xxx())
 // store.dispatch(DYAction.xxx());
 // store.subscribe(listener)
