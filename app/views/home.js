@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { Modal, ScrollView, RefreshControl, Slider, Image, TouchableOpacity, TouchableHighlight, StyleSheet, Text, View } from 'react-native';
+import { Modal, ScrollView, RefreshControl, Slider, Image, Text, View, ListView, TouchableOpacity, TouchableHighlight, StyleSheet } from 'react-native';
 
 import * as HomeAction from '../actions/homeAction';
 
 import ViewPager from 'react-native-viewpager';
 
-import Header from '../components/header'
+import SearchHeader from '../components/searchHeader'
 import HomeViewNav from '../components/homeViewNav'
 import HomeViewItem from '../components/homeViewItem'
+import Loading from '../components/loading'
+import ListItem from '../components/listItem'
 
 const BANNER_IMGS = [
 	{ uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' },
@@ -17,6 +19,8 @@ const BANNER_IMGS = [
 	{ uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' },
 	{ uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' }
 ];
+
+const ListView_Test_Array = ['商品1','商品2','商品3','商品4'];
 
 class Home extends Component {
 	constructor(props, context) {
@@ -27,11 +31,14 @@ class Home extends Component {
 		var dataSource = new ViewPager.DataSource({
 			pageHasChanged: (p1, p2) => p1 !== p2,
 		});
+		let ds = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2});
 		// 实际的DataSources存放在state中  
 		this.state = {
 			dataSource: dataSource.cloneWithPages(BANNER_IMGS),
 			isRefreshing: false,
-			modalVisible: false
+			modalVisible: false,
+			LOADINGTIP: false,
+			dataListViewTest: ds.cloneWithRows(ListView_Test_Array)
 		}
 		console.log(this.state);
 
@@ -57,7 +64,7 @@ class Home extends Component {
 		});
 	}
 	render() {
-		let _scrollView : ScrollView;
+		let _scrollView: ScrollView;
 
 		return (
 			<ScrollView
@@ -77,56 +84,70 @@ class Home extends Component {
 						/>
 				}
 				>
-				<Header />
-
-				<ViewPager
-					dataSource={this.state.dataSource}
-					renderPage={this._renderPage}
-					isLoop={true}
-					autoPlay={true} />
-
-				<HomeViewNav />
-
-				<Modal
-					animationType={"slide"}
-					transparent={false}
-					visible={this.state.modalVisible}
-					onRequestClose={() => { alert("Modal has been closed.") } }
-					>
-					<View style={{ marginTop: 22 }}>
+				{
+					this.state.LOADINGTIP ? <Loading /> :
 						<View>
-							<Text>Hello World!</Text>
+							<SearchHeader />
 
+							<ViewPager
+								dataSource={this.state.dataSource}
+								renderPage={this._renderPage}
+								isLoop={true}
+								autoPlay={true} />
+
+							<HomeViewNav />
+
+							<Modal
+								animationType={"slide"}
+								transparent={false}
+								visible={this.state.modalVisible}
+								onRequestClose={() => { alert("Modal has been closed.") } }
+								>
+								<View style={{ marginTop: 22 }}>
+									<View>
+										<Text>随便写写!</Text>
+										<Text>随便写写!</Text>
+										<Text>随便写写!</Text>
+
+										<TouchableHighlight onPress={() => {
+											this.setModalVisible(!this.state.modalVisible)
+										} }>
+											<Text>Hide Modal</Text>
+										</TouchableHighlight>
+
+									</View>
+								</View>
+							</Modal>
 							<TouchableHighlight onPress={() => {
-								this.setModalVisible(!this.state.modalVisible)
+								this.setModalVisible(true)
 							} }>
-								<Text>Hide Modal</Text>
+								<Text>Show Modal</Text>
 							</TouchableHighlight>
 
+							<TouchableOpacity onPress={() => { this.homeTest('传入一个数据流到home') } }>
+								<Text>Test reducer</Text>
+							</TouchableOpacity>
+							<Text>{this.props.test}</Text>
+
+							<HomeViewItem {...this.props} title="类别一" />
+							<HomeViewItem {...this.props} title="类别二" />
+							<HomeViewItem {...this.props} title="类别三" />
+
+							<ListView 
+								dataSource = {this.state.dataListViewTest}
+								renderRow = {(rowData)=>{
+									return <ListItem testVal={rowData} />;
+								}}
+							 />
+
+							<TouchableOpacity
+								style={styles.button}
+								onPress={() => { _scrollView.scrollTo({ y: 0 }); } }>
+								<Text>Scroll to top</Text>
+							</TouchableOpacity>
+
 						</View>
-					</View>
-				</Modal>
-				<TouchableHighlight onPress={() => {
-					this.setModalVisible(true)
-				} }>
-					<Text>Show Modal</Text>
-				</TouchableHighlight>
-
-				<TouchableOpacity onPress={() => { this.homeTest('传入一个数据流到home') } }>
-					<Text>Test reducer</Text>
-				</TouchableOpacity>
-				<Text>{this.props.test}</Text>
-
-				<HomeViewItem {...this.props} title="类别一" />
-				<HomeViewItem {...this.props} title="类别二" />
-				<HomeViewItem {...this.props} title="类别三" />
-
-				<TouchableOpacity
-					style={styles.button}
-					onPress={() => { _scrollView.scrollTo({ y: -64 }); } }>
-					<Text>Scroll to top</Text>
-				</TouchableOpacity>
-
+				}
 			</ScrollView>
 		)
 	}

@@ -5,7 +5,7 @@ import { View, ScrollView, Text, TouchableOpacity, StyleSheet } from 'react-nati
 
 import * as CartAction  from '../actions/cartAction';
 
-import Header from '../components/header';
+import SearchHeader from '../components/searchHeader';
 import ListItem from '../components/listItem';
 import HotGoods from '../components/hotGoods';
 
@@ -38,9 +38,9 @@ class Cart extends Component {
 		]
 		return (
 			<ScrollView style={{ flex: 1 }}>
-				<Header />
-				<ListItem title="第一条商品" />
-				<ListItem title="第一条商品" />
+				<SearchHeader />
+				<ListItem testVal="第一条商品" />
+				<ListItem testVal="第一条商品" />
 				<HotGoods hotGoods={hotGoodsArray} />
 
 				<TouchableOpacity onPress={() => { this.cartTest('传入一个数据流到cart') } }>

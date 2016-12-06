@@ -9,9 +9,11 @@ import createLogger from 'redux-logger';
 import DYReducers from './reducers/rootReducer';
 
 import Root from './root'
-import DYglobal from './DYglobal'
+import DYGlobal from './global/DYGlobal'
 
-console.log(DYglobal.a)
+console.log(DYGlobal.a)
+console.log(DYGlobal.window.width)
+console.log(DYGlobal.window.height)
 
 // const perflogger = store => next => action => {
 //   console.log( '%c Dispatching ', 'background: #222; color: #bada55', action );

@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { Text, View, TouchableOpacity, ScrollView, StyleSheet, PixelRatio } from 'react-native';
+import { Text, View, TouchableOpacity, ListView, ScrollView, StyleSheet, PixelRatio } from 'react-native';
 
 import * as ClassifyAction from '../actions/classifyAction';
 
+import SearchHeader from '../components/searchHeader';
+
+import ListItem from '../components/listItem'
+
 import Detail from './detail';
+
+const ListView_Test_Array = ['商品1','商品2','商品3','商品4'];
 
 class Classify extends Component {
 	constructor(props) {
 		super(props)
 		console.log(this.props);
+		let ds = new ListView.DataSource({rowHasChanged:(r1,r2)=>r1 !== r2});
+		this.state = {
+			dataListViewTest: ds.cloneWithRows(ListView_Test_Array)
+		}
 	}
 	goTo() {
 		// alert(this.props)
@@ -29,6 +39,7 @@ class Classify extends Component {
 	render() {
 		return (
 			<ScrollView style={{ flex: 1 }}>
+				<SearchHeader />
 				<View style={styles.container}>
 					<View style={[styles.item, styles.center]}>
 						<Text numberOfLines={1}
@@ -61,6 +72,13 @@ class Classify extends Component {
 					<Text>Test reducer</Text>
 				</TouchableOpacity>
 				<Text>{this.props.test}</Text>
+
+				<ListView
+					dataSource={this.state.dataListViewTest}
+					renderRow={(rowData) => {
+						return <ListItem testVal={rowData} />;
+					} }
+					/>
 			</ScrollView>
 		)
 	}

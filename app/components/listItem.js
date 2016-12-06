@@ -8,7 +8,7 @@ class ListItem extends Component {
 	render(){
 		return(
 			<View style={styles.list_item}>
-				<Text style={styles.list_item_font}>{this.props.title}</Text>
+				<Text style={styles.list_item_font}>{this.props.testVal}</Text>
 			</View>
 		)
 	}

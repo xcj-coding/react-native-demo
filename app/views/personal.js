@@ -5,6 +5,8 @@ import {Text,View,TouchableOpacity,ScrollView} from 'react-native';
 
 import * as PersonalAction from '../actions/personalAction';
 
+import SearchHeader from '../components/searchHeader';
+
 class Personal extends Component {
 	constructor(props){
 		super(props)
@@ -16,6 +18,7 @@ class Personal extends Component {
 	render(){
 		return (
 			<ScrollView style={{flex: 1}}>
+				<SearchHeader />
 				<Text>Personal页面</Text>
 
 				<TouchableOpacity onPress={() => { this.personalTest('传入一个数据流到personal') } }>
