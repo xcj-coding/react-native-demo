@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View,Text,Image,StyleSheet,PixelRatio} from 'react-native';
 
-class HotGoods extends Component {
+export default class HotGoods extends Component {
 	constructor(props){
 		super(props)
 	}
@@ -61,5 +61,3 @@ const styles = StyleSheet.create({
 		flexDirection: 'row'
 	}
 })
-
-export default HotGoods;

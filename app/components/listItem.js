@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View,Text,Image,StyleSheet,PixelRatio} from 'react-native';
 
-class ListItem extends Component {
+export default class ListItem extends Component {
 	constructor(props){
 		super(props)
 	}
@@ -30,5 +30,3 @@ const styles = StyleSheet.create({
 		fontSize: 16
 	}
 })
-
-export default ListItem;

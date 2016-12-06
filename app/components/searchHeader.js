@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, PixelRatio 
 
 import DYGlobal from '../global/DYGlobal'
 
-class SearchHeader extends Component {
+export default class SearchHeader extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -80,5 +80,3 @@ const styles = StyleSheet.create({
 		color: 'gray'
 	}
 })
-
-export default SearchHeader;

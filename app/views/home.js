@@ -13,6 +13,8 @@ import HomeViewItem from '../components/homeViewItem'
 import Loading from '../components/loading'
 import ListItem from '../components/listItem'
 
+import NoContent from '../components/noContent'
+
 const BANNER_IMGS = [
 	{ uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' },
 	{ uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' },
@@ -96,7 +98,7 @@ class Home extends Component {
 								autoPlay={true} />
 
 							<HomeViewNav />
-
+							<NoContent />
 							<Modal
 								animationType={"slide"}
 								transparent={false}

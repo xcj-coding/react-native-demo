@@ -1,12 +1,12 @@
 /**
  * 导航栏标题
  */
-import React from 'react';
+import React, {Component} from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
 import DYGlobal from '../global/DYGlobal'
 
-export default class Header extends React.Component {
+export default class Header extends Component {
     render() {
         let NavigationBar = [];
 

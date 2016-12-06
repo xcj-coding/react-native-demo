@@ -3,7 +3,7 @@ import {TouchableOpacity,Text,View,Image,StyleSheet,PixelRatio} from 'react-nati
 
 import Classify from '../views/classify';
 
-class HomeViewNav extends Component {
+export default class HomeViewNav extends Component {
 	constructor(props){
 		super(props)
 		this._goTo = this._goTo.bind(this);
@@ -97,5 +97,3 @@ const styles = StyleSheet.create({
 		alignItems: 'center'
 	},
 })
-
-export default HomeViewNav;

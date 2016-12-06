@@ -3,7 +3,7 @@ import {Text,View,Image,StyleSheet,PixelRatio} from 'react-native';
 
 import Detail from '../views/detail';
 
-class HomeViewItem extends Component {
+export default class HomeViewItem extends Component {
 	constructor(props){
 		super(props)
 		this._goTo = this._goTo.bind(this);
@@ -118,5 +118,3 @@ const styles = StyleSheet.create({
 		borderColor: '#fff'
 	}
 })
-
-export default HomeViewItem;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text,View,TextInput,StyleSheet} from 'react-native';
 
-class Search extends Component {
+export default class Search extends Component {
 	constructor(props){
 		super(props)
 	}
@@ -18,5 +18,3 @@ class Search extends Component {
 		)
 	}
 }
-
-export default Search;
