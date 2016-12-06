@@ -14,9 +14,16 @@
 + 目录android：原生android目录
 + 目录res：资源目录，存放图片等（存放资源方式很多,先统一）
 + 目录app：react-native目录
-  + 3131
-  + 3131
-
+  
+  + index.js 入口文件,注册store（注意文件以及变量命名）
+  + root.js 根文件 -- 引入welcome（注意文件以及变量命名）
+  + welcome 欢迎页面 -- 两秒跳转到home（注意文件以及变量命名）
+  + views 各种视图（注意文件以及变量命名）
+  + components 各种组件（注意文件以及变量命名）
+  + global 全局方法（注意文件以及变量命名）
+  + actions 各种Action（注意文件以及变量命名）
+  + reducers 各种reducer（注意文件以及变量命名）
+  
 ***
 ###项目启动：
 + node环境
