@@ -12,9 +12,9 @@
 ###项目结构：
 + 目录ios：原生ios目录
 + 目录android：原生android目录
++ 目录node_modules：各种第三方包
 + 目录res：资源目录，存放图片等（存放资源方式很多,先统一）
 + 目录app：react-native目录
-  
   + index.js 入口文件,注册store（注意文件以及变量命名）
   + root.js 根文件 -- 引入welcome（注意文件以及变量命名）
   + welcome 欢迎页面 -- 两秒跳转到home（注意文件以及变量命名）
