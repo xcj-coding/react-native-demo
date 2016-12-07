@@ -4,12 +4,7 @@ const DYInitState = fromJS({
     LOGINSTATE: false,
     LOADINGTIP: true,
     AJAXFAILED: false,
-    USERINFO: {},
-    TICKET: {},
-    CRUISE: {},
-    HOTEL: {},
-    FLIGHT: {},
-    HOLIDAY: {},
+    USERINFO: {}
 });
 
 const BaseRD = (state = DYInitState,action)=>{

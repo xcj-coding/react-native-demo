@@ -7,13 +7,14 @@ import * as HomeAction from '../actions/homeAction';
 
 import ViewPager from 'react-native-viewpager';
 
-import SearchHeader from '../components/searchHeader'
-import HomeViewNav from '../components/homeViewNav'
-import HomeViewItem from '../components/homeViewItem'
-import Loading from '../components/loading'
-import ListItem from '../components/listItem'
+import * as Components from '../components/components'
+// import SearchHeader from '../components/searchHeader'
+// import HomeViewNav from '../components/homeViewNav'
+// import HomeViewItem from '../components/homeViewItem'
+// import Loading from '../components/loading'
+// import ListItem from '../components/listItem'
 
-import NoContent from '../components/noContent'
+// import NoContent from '../components/noContent'
 
 const BANNER_IMGS = [
 	{ uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' },
@@ -89,7 +90,7 @@ class Home extends Component {
 				{
 					this.state.LOADINGTIP ? <Loading /> :
 						<View>
-							<SearchHeader />
+							<Components.SearchHeader />
 
 							<ViewPager
 								dataSource={this.state.dataSource}
@@ -97,8 +98,8 @@ class Home extends Component {
 								isLoop={true}
 								autoPlay={true} />
 
-							<HomeViewNav />
-							<NoContent />
+							<Components.HomeViewNav />
+							<Components.NoContent />
 							<Modal
 								animationType={"slide"}
 								transparent={false}
@@ -131,14 +132,14 @@ class Home extends Component {
 							</TouchableOpacity>
 							<Text>{this.props.test}</Text>
 
-							<HomeViewItem {...this.props} title="类别一" />
-							<HomeViewItem {...this.props} title="类别二" />
-							<HomeViewItem {...this.props} title="类别三" />
+							<Components.HomeViewItem {...this.props} title="类别一" />
+							<Components.HomeViewItem {...this.props} title="类别二" />
+							<Components.HomeViewItem {...this.props} title="类别三" />
 
 							<ListView 
 								dataSource = {this.state.dataListViewTest}
 								renderRow = {(rowData)=>{
-									return <ListItem testVal={rowData} />;
+									return <Components.ListItem testVal={rowData} />;
 								}}
 							 />
 

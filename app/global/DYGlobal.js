@@ -10,6 +10,7 @@ DYGlobal.test = 'test';
 
 /**
  * 获取屏幕高宽
+ * Dimensions rn官方api包装
  */
 DYGlobal.window = {
     width: Dimensions.get('window').width,
@@ -35,16 +36,16 @@ DYGlobal.getDataFromAPI = (obj) => {
 
     if(abj.dataType === 'formData'){
         // formData
-
+        abj.fetchHeader.headers = { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
     }else if(abj.dataType === 'json'){
         // json
-
+        abj.fetchHeader.headers = { 'Accept': 'application/json', 'Content-Type': 'application/json'}
     }else{
         // 图片
 
     }
 
-    fetch(abj.url,fetchHeader).then(
+    fetch(abj.url).then(
         abj.success
     ).catch(
         abj.error
