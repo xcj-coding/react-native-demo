@@ -7,6 +7,7 @@ import Classify from './classify';
 import Cart from './cart';
 import Personal from './personal';
 
+
 class AppMain extends Component {
     constructor(props) {
         super(props);

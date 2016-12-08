@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
-import {Provider} from 'react-redux';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 
-
-import {createStore,applyMiddleware} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
@@ -18,7 +17,7 @@ console.log(DYGlobal.window.height)
 
 const logger = createLogger();
 
-const createStoreWithMiddleware = applyMiddleware(logger,thunk)(createStore);
+const createStoreWithMiddleware = applyMiddleware(logger, thunk)(createStore);
 
 const store = createStore(DYReducers);
 
@@ -30,13 +29,24 @@ console.log(store.getState());
 // store.dispatch(DYAction.xxx());
 // store.subscribe(listener)
 
+import { Scene, Router } from 'react-native-router-flux';
+
 class App extends Component {
-	render(){
+	render() {
 		return (
 		<Provider store={store}>
 			<Root />
 		</Provider>
 		)
+		// return (
+		// 	<Router>
+		// 		<Scene key="root">
+		// 			<Scene key="login" component={Login} title="Login" />
+		// 			<Scene key="register" component={Register} title="Register" />
+		// 			<Scene key="home" component={Home} />
+		// 		</Scene>
+		// 	</Router>
+		// )
 	}
 }
 
