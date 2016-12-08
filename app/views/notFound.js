@@ -2,23 +2,23 @@
 import React, { Component } from 'react';
 import { Image, Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 
-import Header from '../components/header'
-import NoContent from '../components/noContent'
+import * as Components from '../components/components';
+// import Header from '../components/header'
+// import NoContent from '../components/noContent'
 
 class NotFound extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props)
-		console.log(props);
 	}
 	personalTest(data) {
 		this.props.personalTest(data)
 	}
-	render(){
+	render() {
 		return (
-			<View style={{flex: 1}}>
-				<Header />
+			<View style={{ flex: 1 }}>
+				<Components.Header />
 
-                <NoContent />
+				<Components.NoContent />
 			</View>
 		)
 	}

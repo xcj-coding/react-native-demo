@@ -1,36 +1,36 @@
-import React, {Component} from 'react';
-import {View,Text,Image,StyleSheet,PixelRatio} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, Image, StyleSheet, PixelRatio } from 'react-native';
 
 export default class HotGoods extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props)
 	}
-	show(title){
+	show(title) {
 		alert(title)
 	}
-	render(){
+	render() {
 		let hotGoodsArray = this.props.hotGoods;
-		return(
+		return (
 			<View style={styles.flex}>
 				<Text style={styles.hotgoods_title}>热门商品</Text>
 				{
-		    		hotGoodsArray.map((item,i)=>{
+					hotGoodsArray.map((item, i) => {
 						return (
-							<View style={[styles.hotgoods_item,styles.flex]} key={i}>
+							<View style={[styles.hotgoods_item, styles.flex]} key={i}>
 								<View style={styles.flex_img}>
-									<Image style={{width:70,height:70}} source={{uri: item.img}} />
+									<Image style={{ width: 70, height: 70 }} source={{ uri: item.img }} />
 								</View>
 								<View style={styles.flex_text}>
 									<Text
 										onPress={this.show.bind(this, item.name)}
 										numberOfLines={2}
-									>
+										>
 										{item.name}
 									</Text>
 								</View>
 							</View>
 						);
-		    		})	
+					})
 				}
 			</View>
 		);
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	hotgoods_item: {
-		margin:10,
+		margin: 10,
 		height: 80,
 		flexDirection: 'row'
 	}

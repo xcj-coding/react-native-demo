@@ -1,7 +1,7 @@
 /**
  * 导航栏标题
  */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
 import DYGlobal from '../global/DYGlobal'
@@ -19,7 +19,7 @@ export default class Header extends Component {
                     style={styles.leftIcon}
                     onPress={this.props.leftIconAction}
                     >
-                    <Image source={require('../../res/back.png')} style={{marginTop:5,width:25,height:25}} />
+                    <Image source={require('../../res/back.png')} style={{ marginTop: 5, width: 25, height: 25 }} />
                 </TouchableOpacity>
             )
         }
@@ -42,7 +42,7 @@ export default class Header extends Component {
                     style={styles.rightIcon}
                     onPress={this.props.rightIconAction}
                     >
-                    <Image source={require('../../res/category.png')} style={{marginTop:5,width:25,height:25}} />
+                    <Image source={require('../../res/category.png')} style={{ marginTop: 5, width: 25, height: 25 }} />
                 </TouchableOpacity>
             )
         }

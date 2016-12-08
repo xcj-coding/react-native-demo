@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {Dimensions,Image,InteractionManager,View} from 'react-native';
+import { Dimensions, Image, InteractionManager, View } from 'react-native';
+
+import DYGlobal from '../global/DYGlobal';
 
 import AppMain from '../views/appMain';
-
-let {height, width} = Dimensions.get('window');
 
 class Welcome extends Component {
     constructor(props) {
@@ -25,11 +25,11 @@ class Welcome extends Component {
     }
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1 }}>
                 <Image
-                    style={{flex: 1, width: width, height: height}}
+                    style={{ flex: 1, width: DYGlobal.window.width, height: DYGlobal.window.height }}
                     source={require('../../res/welcome.jpg')}
-                />
+                    />
             </View>
         );
     }

@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
 export default class NoContent extends Component {
-    render(){
+    render() {
         return (
             <View>
                 <Text>--------------</Text>

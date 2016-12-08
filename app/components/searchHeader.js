@@ -16,10 +16,10 @@ export default class SearchHeader extends Component {
 				<TouchableOpacity
 					activeOpacity={0.75}
 					style={styles.searchInput}
-					onPress={()=>{
+					onPress={() => {
 						alert('加载搜索组件')
 						this.props.searchAction
-					}}
+					} }
 					>
 					<Image
 						style={styles.searchIcon}
@@ -29,10 +29,10 @@ export default class SearchHeader extends Component {
 				</TouchableOpacity>
 				<TouchableOpacity
 					activeOpacity={0.75}
-					onPress={()=>{
+					onPress={() => {
 						alert('加载扫描组件')
 						this.props.searchAction
-					}}
+					} }
 					>
 					<Image
 						style={styles.scanIcon}

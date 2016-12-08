@@ -1,24 +1,24 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import {Text,View,TouchableOpacity,ScrollView} from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
 
 import * as PersonalAction from '../actions/personalAction';
 
-import SearchHeader from '../components/searchHeader';
+import * as Components from '../components/components';
+// import SearchHeader from '../components/searchHeader';
 
 class Personal extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props)
-		console.log(props);
 	}
 	personalTest(data) {
 		this.props.personalTest(data)
 	}
-	render(){
+	render() {
 		return (
-			<ScrollView style={{flex: 1}}>
-				<SearchHeader />
+			<ScrollView style={{ flex: 1 }}>
+				<Components.SearchHeader />
 				<Text>Personal页面</Text>
 
 				<TouchableOpacity onPress={() => { this.personalTest('传入一个数据流到personal') } }>

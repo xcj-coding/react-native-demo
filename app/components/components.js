@@ -7,6 +7,6 @@ import Loading from './loading'
 import ListItem from './listItem'
 import NoContent from './noContent'
 
-let Components = {SearchHeader,HomeViewNav,HomeViewItem,Loading,ListItem,NoContent}
+let Components = { SearchHeader, HomeViewNav, HomeViewItem, Loading, ListItem, NoContent }
 
 module.exports = Components;

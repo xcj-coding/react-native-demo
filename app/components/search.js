@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import {Text,View,TextInput,StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, TextInput, StyleSheet } from 'react-native';
 
 export default class Search extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props)
 	}
-	render(){
+	render() {
 		return (
-			<View style={[styles.flex,styles.flexDirection]}>
+			<View style={[styles.flex, styles.flexDirection]}>
 				<View style={styles.flex}>
 					<TextInput style={styles.input} returnKeyType="search" />
 				</View>

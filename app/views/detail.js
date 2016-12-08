@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
-import DYGlobal from '../global/DYGlobal'
+import DYGlobal from '../global/DYGlobal';
 
-import Header from '../components/header'
+import * as Components from '../components/components';
+// import Header from '../components/header'
 
-class ToolBar extends React.Component {
+class ToolBar extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
@@ -30,7 +31,7 @@ class Detail extends Component {
 	render() {
 		return (
 			<View style={{ flex: 1, backgroundColor: '#fff' }}>
-				<Header
+				<Components.Header
 					leftIcon={true}
 					leftIconAction={() => this.props.navigator.pop()}
 					rightIcon={true}
@@ -62,9 +63,6 @@ class Detail extends Component {
 		)
 	}
 }
-
-export default Detail;
-
 
 const styles = StyleSheet.create({
 	webView: {
@@ -102,3 +100,8 @@ const styles = StyleSheet.create({
 		backgroundColor: '#ccc'
 	}
 });
+
+
+export default Detail;
+
+

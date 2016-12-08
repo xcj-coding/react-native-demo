@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {View,Text,Image,StyleSheet,PixelRatio} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, Image, StyleSheet, PixelRatio } from 'react-native';
 
 export default class ListItem extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props)
 	}
-	render(){
-		return(
+	render() {
+		return (
 			<View style={styles.list_item}>
 				<Text style={styles.list_item_font}>{this.props.testVal}</Text>
 			</View>
