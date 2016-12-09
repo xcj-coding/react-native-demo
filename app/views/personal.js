@@ -1,13 +1,26 @@
+/**
+ * 1.基础第三方框架引入
+ */
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
-
+/**
+ * 2.第三方组件引入
+ */
+import { Actions } from 'react-native-router-flux';
+/**
+ * 3.项目组件引入
+ */
+import { SearchHeader } from '../components/';
+/**
+ * 4.项目Action引入 || 配置文件引入 || 公用方法引入
+ */
 import * as PersonalAction from '../actions/personalAction';
 
-import * as Components from '../components/components';
-// import SearchHeader from '../components/searchHeader';
-
+/**
+ * 页面类
+ */
 class Personal extends Component {
 	constructor(props) {
 		super(props)
@@ -18,7 +31,7 @@ class Personal extends Component {
 	render() {
 		return (
 			<ScrollView style={{ flex: 1 }}>
-				<Components.SearchHeader />
+				<SearchHeader />
 				<Text>Personal页面</Text>
 
 				<TouchableOpacity onPress={() => { this.personalTest('传入一个数据流到personal') } }>

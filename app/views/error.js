@@ -10,7 +10,7 @@ import { Actions } from 'react-native-router-flux';
 /**
  * 3.项目组件引入
  */
-import { Header, NoContent } from '../components/';
+
 /**
  * 4.项目Action引入 || 配置文件引入 || 公用方法引入
  */
@@ -25,13 +25,14 @@ class NotFound extends Component {
 	render() {
 		return (
 			<View style={{ flex: 1 }}>
-				<Header />
+                <Text>出错了，哥～</Text>
+                <Text>我是传过来的值：{this.props.data}</Text>
+                
 				<TouchableOpacity onPress={() => {
 					Actions.pop()
 				} }>
 					<Text>goto home</Text>
 				</TouchableOpacity>
-				<NoContent />
 			</View>
 		)
 	}

@@ -1,24 +1,10 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, PixelRatio } from 'react-native';
 
-import Detail from '../views/detail';
-
 export default class HomeViewItem extends Component {
 	constructor(props) {
 		super(props)
-		this._goTo = this._goTo.bind(this);
-
-		console.log(this.props);
-	}
-	_goTo() {
-		this.props.navigator.push({
-			component: Detail,
-			title: '详情页面',
-			rightButtonTitle: '购物车',
-			onRightButtonPress: () => {
-				alert('进入购物车')
-			}
-		})
+		console.log(props)
 	}
 	render() {
 		return (
@@ -30,7 +16,7 @@ export default class HomeViewItem extends Component {
 					<View style={[styles.item, styles.lineRight]}>
 						<Image source={{ uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' }} style={[styles.item, styles.centerBottom]}>
 							<Text style={{ fontSize: 12 }} numberOfLines={1}
-								onPress={this._goTo}>
+								onPress={this.props.goToDetail}>
 								商品1商品1商品1商品1
 							</Text>
 						</Image>
@@ -38,7 +24,7 @@ export default class HomeViewItem extends Component {
 					<View style={[styles.item]}>
 						<Image source={{ uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' }} style={[styles.item, styles.centerBottom]}>
 							<Text style={{ fontSize: 12 }} numberOfLines={1}
-								onPress={this._goTo}>
+								onPress={this.props.goToDetail}>
 								商品1商品1商品1商品1
 							</Text>
 						</Image>
@@ -48,7 +34,7 @@ export default class HomeViewItem extends Component {
 					<View style={[styles.itemBottom, styles.lineLeftRight]}>
 						<Image source={{ uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' }} style={[styles.itemBottom, styles.centerBottom]}>
 							<Text style={{ fontSize: 12 }} numberOfLines={1}
-								onPress={this._goTo}>
+								onPress={this.props.goToDetail}>
 								商品1商品1商品1商品1
 							</Text>
 						</Image>
@@ -56,7 +42,7 @@ export default class HomeViewItem extends Component {
 					<View style={[styles.itemBottom, styles.lineLeftRight]}>
 						<Image source={{ uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' }} style={[styles.itemBottom, styles.centerBottom]}>
 							<Text style={{ fontSize: 12 }} numberOfLines={1}
-								onPress={this._goTo}>
+								onPress={this.props.goToDetail}>
 								商品1商品1商品1商品1
 							</Text>
 						</Image>
@@ -64,7 +50,7 @@ export default class HomeViewItem extends Component {
 					<View style={[styles.itemBottom, styles.lineLeftRight]}>
 						<Image source={{ uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' }} style={[styles.itemBottom, styles.centerBottom]}>
 							<Text style={{ fontSize: 12 }} numberOfLines={1}
-								onPress={this._goTo}>
+								onPress={this.props.goToDetail}>
 								商品1商品1商品1商品1
 							</Text>
 						</Image>

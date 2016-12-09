@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Dimensions, Image, InteractionManager, View } from 'react-native';
+import { Component } from 'react';
+import { Dimensions, Image, InteractionManager, View ,Animated} from 'react-native';
 
 import DYGlobal from '../global/DYGlobal';
 
@@ -8,29 +8,32 @@ import AppMain from '../views/appMain';
 class Welcome extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            bounceValue: new Animated.Value(1)
+        };
     }
     componentDidMount() {
-        const {navigator} = this.props;
+        const { routes } = this.context;
+        Animated.timing(
+            this.state.bounceValue, { toValue: 1.2, duration: 1000 }
+        ).start();
         this.timer = setTimeout(() => {
-            InteractionManager.runAfterInteractions(() => {
-                navigator.resetTo({
-                    component: AppMain,
-                    name: 'AppMain'
-                });
-            });
-        }, 2000);
+            routes.tabbar();
+        }, 1000);
     }
     componentWillUnmount() {
-        this.timer && clearTimeout(this.timer);
+        clearTimeout(this.timer);
     }
     render() {
         return (
-            <View style={{ flex: 1 }}>
-                <Image
-                    style={{ flex: 1, width: DYGlobal.window.width, height: DYGlobal.window.height }}
-                    source={require('../../res/welcome.jpg')}
-                    />
-            </View>
+            <Animated.Image
+                style={{
+                    width: DYGlobal.window.width,
+                    height: DYGlobal.window.height,
+                    transform: [{ scale: this.state.bounceValue }]
+                }}
+                source={require('../../res/welcome.jpg')}
+                />
         );
     }
 }

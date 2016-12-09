@@ -2,7 +2,7 @@
  * 全局变量
  * 
  */
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 
 const DYGlobal = {}
 
@@ -30,17 +30,17 @@ DYGlobal.getDataFromAPI = (obj) => {
     abj.type = obj.type || 'POST';
     abj.dataType = obj.type || 'json';
     abj.data = obj.data;
-    abj.success = obj.success || ((data)=>{console.log('成功回流: ' + data)});
-    abj.error = obj.error || ((data)=>{console.log('失败回流: ' + data)});
+    abj.success = obj.success || ((data) => { console.log('成功回流: ' + data) });
+    abj.error = obj.error || ((data) => { console.log('失败回流: ' + data) });
     abj.fetchHeader = {};
 
-    if(abj.dataType === 'formData'){
+    if (abj.dataType === 'formData') {
         // formData
-        abj.fetchHeader.headers = { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-    }else if(abj.dataType === 'json'){
+        abj.fetchHeader.headers = { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+    } else if (abj.dataType === 'json') {
         // json
-        abj.fetchHeader.headers = { 'Accept': 'application/json', 'Content-Type': 'application/json'}
-    }else{
+        abj.fetchHeader.headers = { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+    } else {
         // 图片
 
     }
@@ -49,11 +49,9 @@ DYGlobal.getDataFromAPI = (obj) => {
         abj.success
     ).catch(
         abj.error
-    )
+        )
 
 }
-
-
 
 
 module.exports = DYGlobal;

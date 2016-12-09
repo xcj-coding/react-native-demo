@@ -1,15 +1,26 @@
+/**
+ * 1.基础第三方框架引入
+ */
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { View, ScrollView, Text, TouchableOpacity, StyleSheet } from 'react-native';
-
+import { ScrollView, Text, TouchableOpacity, StyleSheet } from 'react-native';
+/**
+ * 2.第三方组件引入
+ */
+import { Actions } from 'react-native-router-flux';
+/**
+ * 3.项目组件引入
+ */
+import { SearchHeader, HotGoods, ListItem } from '../components/';
+/**
+ * 4.项目Action引入 || 配置文件引入 || 公用方法引入
+ */
 import * as CartAction from '../actions/cartAction';
 
-import * as Components from '../components/components';
-// import SearchHeader from '../components/searchHeader';
-// import ListItem from '../components/listItem';
-// import HotGoods from '../components/hotGoods';
-
+/**
+ * 页面类
+ */
 class Cart extends Component {
 	constructor(props) {
 		super(props)
@@ -37,11 +48,11 @@ class Cart extends Component {
 			},
 		]
 		return (
-			<ScrollView style={{ flex: 1 }}>
-				<Components.SearchHeader />
-				<Components.ListItem testVal="第一条商品" />
-				<Components.ListItem testVal="第一条商品" />
-				<Components.HotGoods hotGoods={hotGoodsArray} />
+			<ScrollView style={styles.flex}>
+				<SearchHeader />
+				<ListItem testVal="第一条商品" />
+				<ListItem testVal="第一条商品" />
+				<HotGoods hotGoods={hotGoodsArray} />
 
 				<TouchableOpacity onPress={() => { this.cartTest('传入一个数据流到cart') } }>
 					<Text>Test reducer</Text>

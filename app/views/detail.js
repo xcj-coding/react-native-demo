@@ -1,11 +1,24 @@
+/**
+ * 1.基础第三方框架引入
+ */
 import React, { Component } from 'react';
 import { Text, View, ScrollView, Image, TouchableOpacity, StyleSheet } from 'react-native';
-
+/**
+ * 2.第三方组件引入
+ */
+import { Actions } from 'react-native-router-flux';
+/**
+ * 3.项目组件引入
+ */
+import { Header } from '../components/';
+/**
+ * 4.项目Action引入 || 配置文件引入 || 公用方法引入
+ */
 import DYGlobal from '../global/DYGlobal';
 
-import * as Components from '../components/components';
-// import Header from '../components/header'
-
+/**
+ * 页面类
+ */
 class ToolBar extends Component {
 	render() {
 		return (
@@ -31,9 +44,9 @@ class Detail extends Component {
 	render() {
 		return (
 			<View style={{ flex: 1, backgroundColor: '#fff' }}>
-				<Components.Header
+				<Header
 					leftIcon={true}
-					leftIconAction={() => this.props.navigator.pop()}
+					leftIconAction={() => {alert('这是假的')}}
 					rightIcon={true}
 					rightIconAction={() => alert('开发中...')}
 					title='详情页面'

@@ -1,18 +1,32 @@
+/**
+ * 1.基础第三方框架引入
+ */
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { Text, View, TouchableOpacity, ListView, ScrollView, StyleSheet, PixelRatio } from 'react-native';
-
+/**
+ * 2.第三方组件引入
+ */
+import { Actions } from 'react-native-router-flux';
+/**
+ * 3.项目组件引入
+ */
+import { SearchHeader, ListItem } from '../components/';
+/**
+ * 4.项目Action引入 || 配置文件引入 || 公用方法引入
+ */
 import * as ClassifyAction from '../actions/classifyAction';
 
-import * as Components from '../components/components';
-// import SearchHeader from '../components/searchHeader';
-// import ListItem from '../components/listItem'
 
-import Detail from './detail';
-
+/**
+ * 页面内使用常量
+ */
 const ListView_Test_Array = ['商品1', '商品2', '商品3', '商品4'];
 
+/**
+ * 页面类
+ */
 class Classify extends Component {
     constructor(props) {
         super(props)
@@ -21,32 +35,17 @@ class Classify extends Component {
             dataListViewTest: ds.cloneWithRows(ListView_Test_Array)
         }
     }
-    goTo() {
-        // alert(this.props)
-        this.props.navigator.push({
-            component: Detail,
-            title: '详情页面',
-            rightButtonTitle: '购物车',
-            onRightButtonPress: () => {
-                alert('进入购物车')
-            }
-        })
-    }
     classifyTest(data) {
         this.props.classifyTest(data)
     }
     render() {
         return (
-            <ScrollView style={{ flex: 1 }}>
-                <Components.SearchHeader />
-                
+            <ScrollView style={styles.flex}>
+                <SearchHeader />
+
                 <View style={styles.container}>
                     <View style={[styles.item, styles.center]}>
-                        <Text numberOfLines={1}
-                            onLayout={(e) => {
-                                // console.log(e.nativeEvent)
-                            } }
-                            onPress={this.goTo.bind(this)}>
+                        <Text numberOfLines={1}>
                             商品1商品1商品1商品1
 						</Text>
                     </View>
@@ -71,12 +70,19 @@ class Classify extends Component {
                 <TouchableOpacity onPress={() => { this.classifyTest('传入一个数据流到classify') } }>
                     <Text>Test reducer</Text>
                 </TouchableOpacity>
+
                 <Text>{this.props.test}</Text>
+
+                <TouchableOpacity onPress={() => {
+                    Actions.home()
+                } }>
+                    <Text>goto home</Text>
+                </TouchableOpacity>
 
                 <ListView
                     dataSource={this.state.dataListViewTest}
                     renderRow={(rowData) => {
-                        return <Components.ListItem testVal={rowData} />;
+                        return <ListItem testVal={rowData} />;
                     } }
                     />
             </ScrollView>

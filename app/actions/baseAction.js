@@ -11,9 +11,9 @@ export const loadingTip = (data) => {
 	}
 }
 export const ajaxFailed = (data) => {
-	let data = !data;
+	let date = !data;
 	return {
 		type: 'AJAXFAILED',
-		data
+		date
 	}
 }
