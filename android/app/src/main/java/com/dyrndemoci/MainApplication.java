@@ -1,4 +1,4 @@
-package com.sss;
+package com.dyrndemoci;
 
 import android.app.Application;
 import android.util.Log;

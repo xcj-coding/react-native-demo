@@ -1,3 +1,3 @@
-rootProject.name = 'sss'
+rootProject.name = 'dyrnDemoCi'
 
 include ':app'

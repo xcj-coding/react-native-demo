@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { Modal, ListView, ScrollView, Image, Text, View, TouchableOpacity, TouchableHighlight, StyleSheet } from 'react-native';
+import { requireNativeComponent, DeviceEventEmitter, NativeModules, Modal, ListView, ScrollView, Image, Text, View, TouchableOpacity, TouchableHighlight, StyleSheet } from 'react-native';
 
 /**
  * 2.第三方组件引入
@@ -29,6 +29,29 @@ const BANNER_IMGS = [
     { uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' },
     { uri: 'https://img.alicdn.com/imgextra/i2/2406728216/TB22LVnkpXXXXcqXpXXXXXXXXXX_!!2406728216.jpg' }
 ];
+
+// 测试接入ios原生模块
+let DYTestManager = NativeModules.DYTestManager;
+DYTestManager.BBB('我想接入', '接入成功', (error,message)=>{
+    if(error){
+        console.log(error);
+    }else{
+        console.log("message:",message);
+    }
+});
+let DYTestManagerConst = DYTestManager.YEAR;
+console.log(DYTestManagerConst)
+var subscription = DeviceEventEmitter.addListener(
+  'EventReminder',
+  (reminder) => console.log(reminder.name)
+);
+DeviceEventEmitter.emit('EventReminder',{name:'订阅'})
+subscription.remove();
+DeviceEventEmitter.emit('EventReminder',{name:'订阅'})
+DeviceEventEmitter.emit('EventReminder',{name:'订阅'})
+// module.exports = requireNativeComponent('RCTMap', null);
+import MapView from './mapView'
+// 测试接入ios原生模块
 
 /**
  * 页面类
@@ -68,6 +91,9 @@ class Home extends Component {
     render() {
         return (
             <ScrollView style={{ flex: 1 }}>
+            <View style={{ flex: 1 }}>
+                <MapView />
+            </View>
                 <ViewPager
                     dataSource={this.state.dataSource}
                     renderPage={this._renderPage}
