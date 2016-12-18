@@ -4,7 +4,6 @@ import { Text, View, Image, StyleSheet, PixelRatio } from 'react-native';
 export default class HomeViewItem extends Component {
 	constructor(props) {
 		super(props)
-		console.log(props)
 	}
 	render() {
 		return (

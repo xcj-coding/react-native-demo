@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, PixelRatio } from 'react-native';
 
-import DYGlobal from '../global/DYGlobal'
+import DYcommon from '../common/DYcommon';
 
 export default class SearchHeader extends Component {
 	constructor(props) {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		height: 24,
-		width: DYGlobal.window.width - 30 - 16 - 6 * 3,
+		width: DYcommon.window.width - 30 - 16 - 6 * 3,
 		marginTop: 16,
 		marginRight: 16,
 		backgroundColor: '#fff',

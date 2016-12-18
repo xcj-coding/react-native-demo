@@ -14,7 +14,7 @@ import { Header } from '../components/';
 /**
  * 4.项目Action引入 || 配置文件引入 || 公用方法引入
  */
-import DYGlobal from '../global/DYGlobal';
+import DYcommon from '../common/DYcommon';
 
 /**
  * 页面类
@@ -46,12 +46,15 @@ class Detail extends Component {
 			<View style={{ flex: 1, backgroundColor: '#fff' }}>
 				<Header
 					leftIcon={true}
-					leftIconAction={() => {alert('这是假的')}}
 					rightIcon={true}
 					rightIconAction={() => alert('开发中...')}
 					title='详情页面'
 					/>
-
+				<TouchableOpacity onPress={() => {
+					Actions.pop()
+				} }>
+					<Text>goto last</Text>
+				</TouchableOpacity>
 				<ScrollView style={styles.webView}>
 					<Text>详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容</Text>
 					<Text>详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容详情页内容</Text>
@@ -79,8 +82,8 @@ class Detail extends Component {
 
 const styles = StyleSheet.create({
 	webView: {
-		width: DYGlobal.window.width,
-		height: DYGlobal.window.height - 64 - 40,
+		width: DYcommon.window.width,
+		height: DYcommon.window.height - 64 - 40,
 	},
 
 	container: {
@@ -109,7 +112,7 @@ const styles = StyleSheet.create({
 		height: 20,
 		width: 0.5,
 		top: 10,
-		right: DYGlobal.window.width * 0.5,
+		right: DYcommon.window.width * 0.5,
 		backgroundColor: '#ccc'
 	}
 });

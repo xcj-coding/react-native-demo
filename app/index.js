@@ -19,20 +19,19 @@ import { Actions } from 'react-native-router-flux';
  * 4.项目reducers引入 || 项目Action引入 || 配置文件引入 || 公用方法引入
  */
 import DYReducers from './reducers/';
-import DYGlobal from './global/DYGlobal'
+import DYcommon from './common/DYcommon';
+
 /**
  * 5.流转页面
  */
 import Root from './root'
-
 
 /**
  * 页面内使用常量
  */
 const logger = createLogger();
 const createStoreWithMiddleware = applyMiddleware(logger, thunk)(createStore);
-const store = createStore(DYReducers);
-console.log(store.getState());
+const store = createStoreWithMiddleware(DYReducers);
 
 /**
  * 页面类

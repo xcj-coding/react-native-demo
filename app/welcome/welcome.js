@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Dimensions, Image, InteractionManager, View ,Animated} from 'react-native';
 
-import DYGlobal from '../global/DYGlobal';
+import DYcommon from '../common/DYcommon';
 
 import AppMain from '../views/appMain';
 
@@ -28,8 +28,8 @@ class Welcome extends Component {
         return (
             <Animated.Image
                 style={{
-                    width: DYGlobal.window.width,
-                    height: DYGlobal.window.height,
+                    width: DYcommon.window.width,
+                    height: DYcommon.window.height,
                     transform: [{ scale: this.state.bounceValue }]
                 }}
                 source={require('../../res/welcome.jpg')}

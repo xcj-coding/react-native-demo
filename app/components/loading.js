@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
 
-import DYGlobal from '../global/DYGlobal'
+import DYcommon from '../common/DYcommon';
 
 export default class Loading extends Component {
     render() {
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
-        top: (DYGlobal.window.height - 80) / 2,
-        left: (DYGlobal.window.width - 100) / 2,
+        top: (DYcommon.window.height - 80) / 2,
+        left: (DYcommon.window.width - 100) / 2,
     },
 
     loadingTitle: {

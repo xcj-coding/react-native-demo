@@ -1,6 +1,8 @@
 package com.dyrndemoci;
 
 import com.facebook.react.ReactActivity;
+import com.eguma.barcodescanner.BarcodeScanner;
+import com.lwansbrough.RCTCamera.RCTCameraPackage;
 
 public class MainActivity extends ReactActivity {
 

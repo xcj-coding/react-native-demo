@@ -7,12 +7,7 @@ const DYInitState = fromJS({
 const PersonalRD = (state = DYInitState, action) => {
     switch (action.type) {
         case "personalTestAction":
-            console.log('personalTestAction');
-            console.log('oldstate:' + state);
-            console.log(action.data);
-            state = state.mergeIn(['test'], action.data);
-            console.log('newstate:' + state);
-            return state;
+            return state.mergeIn(['test'], action.data);
         default:
             return state;
     }

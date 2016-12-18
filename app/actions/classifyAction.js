@@ -7,3 +7,10 @@ export const classifyTest = (data) => {
 		data
 	}
 }
+
+// export const classifyChangeTypeId = (data) => {
+// 	return {
+// 		type: 'classifyChangeTypeId',
+// 		data
+// 	}
+// }

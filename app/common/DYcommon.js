@@ -4,15 +4,15 @@
  */
 import { Dimensions } from 'react-native';
 
-const DYGlobal = {}
+const DYcommon = {}
 
-DYGlobal.test = 'test';
+DYcommon.test = 'test';
 
 /**
  * 获取屏幕高宽
  * Dimensions rn官方api包装
  */
-DYGlobal.window = {
+DYcommon.window = {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
 };
@@ -21,7 +21,7 @@ DYGlobal.window = {
  * fetch封装，只适用于移动端项目
  * @param {[type]} obj 对象 url,type,dataType,data,success,error
  */
-DYGlobal.getDataFromAPI = (obj) => {
+DYcommon.getDataFromAPI = (obj) => {
     let abj = {};
 
     // 测试地址
@@ -54,4 +54,4 @@ DYGlobal.getDataFromAPI = (obj) => {
 }
 
 
-module.exports = DYGlobal;
+module.exports = DYcommon;

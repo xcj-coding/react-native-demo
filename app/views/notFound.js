@@ -25,11 +25,15 @@ class NotFound extends Component {
 	render() {
 		return (
 			<View style={{ flex: 1 }}>
-				<Header />
 				<TouchableOpacity onPress={() => {
 					Actions.pop()
 				} }>
-					<Text>goto home</Text>
+					<Text>goto last</Text>
+				</TouchableOpacity>
+				<TouchableOpacity onPress={() => {
+					Actions.detail()
+				} }>
+					<Text>goto detail</Text>
 				</TouchableOpacity>
 				<NoContent />
 			</View>

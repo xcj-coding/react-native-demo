@@ -11,6 +11,7 @@
 
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation AppDelegate
 

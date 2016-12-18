@@ -6,7 +6,8 @@ import ClassifyRD from './classifyReducer';
 import CartRD from './cartReducer';
 import PersonalRD from './personalReducer';
 import Routes from './routes';
+import Theme from './themeReducer';
 
-const DYReducers = combineReducers({ BaseRD, HomeRD, ClassifyRD, CartRD, PersonalRD, Routes });
+const DYReducers = combineReducers({ BaseRD, HomeRD, ClassifyRD, CartRD, PersonalRD, Routes, Theme });
 
 export default DYReducers;

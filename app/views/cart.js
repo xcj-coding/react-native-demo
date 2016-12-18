@@ -12,7 +12,7 @@ import { Actions } from 'react-native-router-flux';
 /**
  * 3.项目组件引入
  */
-import { SearchHeader, HotGoods, ListItem } from '../components/';
+import { SearchHeader, HotGoods } from '../components/';
 /**
  * 4.项目Action引入 || 配置文件引入 || 公用方法引入
  */
@@ -50,8 +50,6 @@ class Cart extends Component {
 		return (
 			<ScrollView style={styles.flex}>
 				<SearchHeader />
-				<ListItem testVal="第一条商品" />
-				<ListItem testVal="第一条商品" />
 				<HotGoods hotGoods={hotGoodsArray} />
 
 				<TouchableOpacity onPress={() => { this.cartTest('传入一个数据流到cart') } }>

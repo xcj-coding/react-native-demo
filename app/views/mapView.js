@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { requireNativeComponent } from 'react-native';
+// import React, { Component } from 'react';
+// import { requireNativeComponent } from 'react-native';
 
-let RCTMap = requireNativeComponent('RCTMap', MapView);
+// let RCTMap = requireNativeComponent('RCTMap', MapView);
 
-class MapView extends Component {
-  render() {
-    return <RCTMap {...this.props} />;
-  }
-}
+// class MapView extends Component {
+//   render() {
+//     return <RCTMap {...this.props} />;
+//   }
+// }
 // MapView.propTypes = {
 //   /**
 //    * When this property is set to `true` and a valid camera is associated
@@ -18,4 +18,4 @@ class MapView extends Component {
 //    */
 //   pitchEnabled: React.PropTypes.bool,
 // };
-module.exports = MapView;
+// module.exports = MapView;
