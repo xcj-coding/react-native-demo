@@ -49,7 +49,7 @@ DYcommon.getDataFromAPI = (obj) => {
         abj.success
     ).catch(
         abj.error
-        )
+    )
 
 }
 

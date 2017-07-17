@@ -1,5 +1,4 @@
 /**
- * @author huangliang@douyu.tv
  * @description 改造原生StyleSheet 添加ios和android 样式例外支持
  */
 

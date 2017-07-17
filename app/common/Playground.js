@@ -1,5 +1,4 @@
 /**
- * @author huangliang@douyu.tv
  * @description 用于多状态ui组件调试
  */
 import React, {Component} from 'react';
