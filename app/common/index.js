@@ -1,5 +1,5 @@
-import DouyuStyleSheet from './DouyuStyleSheet';
-import Playground from './Playground';
+import DouyuStyleSheet from './douyuStyleSheet';
+import Playground from './playground';
 import Config from './Config';
 
 module.exports = {

@@ -19,7 +19,7 @@ import { Actions } from 'react-native-router-flux';
  * 4.项目reducers引入 || 项目Action引入 || 配置文件引入 || 公用方法引入
  */
 import DYReducers from './reducers/';
-import DYcommon from './common/DYcommon';
+import DYcommon from './common/dyCommon';
 
 /**
  * 5.流转页面

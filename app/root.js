@@ -22,28 +22,32 @@ import { Router, Scene, TabBar, Reducer, Modal } from 'react-native-router-flux'
 // import Welcome from './welcome/welcome';
 import Home from './views/home';
 import Classify from './views/classify';
-import Best from './views/best';
+import Recommend from './views/recommend';
 import Cart from './views/cart';
 import Personal from './views/personal';
 import NotFound from './views/notFound';
 import List from './views/list';
 import Detail from './views/detail';
-import Error from './views/error';
 import WebViewPage from './views/webViewPage';
-import Other from './views/other'
+import Search from './views/search';
+import Rankings from './views/rankings';
+import Error from './views/error';
+import Other from './views/other';
+import Camera from './views/camera';
+import CameraRes from './views/cameraRes';
 
 
 /**
  * 页面内使用常量
  */
-import RootConfig from './common/Rootconfig';
+import RootConfig from './common/rootConfig';
 
 const reducerCreate = params => {
-	const defaultReducer = Reducer(params);
-	return (state, action) => {
-		// console.log("ACTION:", action);
-		return defaultReducer(state, action);
-	}
+    const defaultReducer = Reducer(params);
+    return (state, action) => {
+        // console.log("ACTION:", action);
+        return defaultReducer(state, action);
+    }
 };
 const RouterWithRedux = connect()(Router)
 const backButton = require('../res/classify.png');
@@ -67,63 +71,81 @@ const getSceneStyle = (props, computedProps) => {
  * 页面类
  */
 class TabIcon extends Component {
-	constructor(props) {
-		super(props);
-	}
-	render() {
-		return (
-			<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-				<Image source={this.props.selected ? this.props.selectedImgLink : this.props.imgLink} style={{ width: 26, height: 26 }} />
-				<Text style={{ color: this.props.selected ? 'red' : 'black',fontSize:12 }}>{this.props.title}</Text>
-			</View>
-		);
-	}
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Image source={this.props.selected ? this.props.selectedImgLink : this.props.imgLink}
+                    style={{ width: 26, height: 26 }} />
+                <Text style={{ color: this.props.selected ? 'red' : 'black', fontSize: 12 }}>{this.props.title}</Text>
+            </View>
+        );
+    }
 }
 
 class Root extends Component {
-	constructor(props) {
-		super(props)
-	}
-	render() {
-		return (
-			<RouterWithRedux
-				getSceneStyle={getSceneStyle}
-				backButtonImage={backButton}
-				createReducer={reducerCreate}
-				>
-				<Scene key="modal" component={Modal}>
-					<Scene key="root">
-						<Scene key='tabs' tabs={true} tabBarStyle={{ backgroundColor: '#fff' }} initial >
-							{
-								RootConfig.nav.map((item, i) => {
-									switch (item.TabText) {
-										case "首页":
-											return <Scene key={"home"} component={Home} icon={TabIcon} title={item.TabText} imgLink={item.TabImage} selectedImgLink={item.SelectTabImage} hideNavBar />;
-										case "分类":
-											return <Scene key={"classify"} component={Classify} icon={TabIcon} title={item.TabText} imgLink={item.TabImage} selectedImgLink={item.SelectTabImage} hideNavBar />;
-										case "推荐":
-											return <Scene key={"best"} component={Best} icon={TabIcon} title={item.TabText} imgLink={item.TabImage} selectedImgLink={item.SelectTabImage} hideNavBar />;
-										case "购物车":
-											return <Scene key={"cart"} component={Cart} icon={TabIcon} title={item.TabText} imgLink={item.TabImage} selectedImgLink={item.SelectTabImage} hideNavBar />;
-										case "我的":
-											return <Scene key={"personal"} component={Personal} icon={TabIcon} title={item.TabText} imgLink={item.TabImage} selectedImgLink={item.SelectTabImage} hideNavBar />;
-										default:
-											return null;
-									}
-								})
-							}
-						</Scene>
-						<Scene key="notFound" component={NotFound} title="NotFound" />
-						<Scene key="list" component={List} title="List" direction="List" hideNavBar hideTabBar />
-						<Scene key="detail" component={Detail} title="Detail" direction="horizontal" hideNavBar hideTabBar />
-						<Scene key="webViewPage" component={WebViewPage} title="WebViewPage" direction="horizontal" hideNavBar hideTabBar />
-					</Scene>
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return (
+            <RouterWithRedux
+                getSceneStyle={getSceneStyle}
+                backButtonImage={backButton}
+                createReducer={reducerCreate}
+                >
+                <Scene key="modal" component={Modal}>
+                    <Scene key="root">
+                        <Scene key='tabs' tabs={true} tabBarStyle={{ backgroundColor: '#fff' }} initial>
+                            {
+                                RootConfig.nav.map((item, i) => {
+                                    switch (item.TabText) {
+                                        case "首页":
+                                            return <Scene key={"home"} component={Home} icon={TabIcon}
+                                                title={item.TabText} imgLink={item.TabImage}
+                                                selectedImgLink={item.SelectTabImage} hideNavBar />;
+                                        case "分类":
+                                            return <Scene key={"classify"} component={Classify} icon={TabIcon}
+                                                title={item.TabText} imgLink={item.TabImage}
+                                                selectedImgLink={item.SelectTabImage} hideNavBar />;
+                                        case "推荐":
+                                            return <Scene key={"recommend"} component={Recommend} icon={TabIcon}
+                                                title={item.TabText} imgLink={item.TabImage}
+                                                selectedImgLink={item.SelectTabImage} hideNavBar />;
+                                        case "购物车":
+                                            return <Scene key={"cart"} component={Cart} icon={TabIcon}
+                                                title={item.TabText} imgLink={item.TabImage}
+                                                selectedImgLink={item.SelectTabImage} hideNavBar />;
+                                        case "我的":
+                                            return <Scene key={"personal"} component={Personal} icon={TabIcon}
+                                                title={item.TabText} imgLink={item.TabImage}
+                                                selectedImgLink={item.SelectTabImage} hideNavBar />;
+                                        default:
+                                            return null;
+                                    }
+                                })
+                            }
+                        </Scene>
+
+                        <Scene key="notFound" component={NotFound} title="NotFound" />
+                        <Scene key="list" component={List} title="List" hideNavBar hideTabBar />
+                        <Scene key="detail" component={Detail} title="Detail" hideNavBar hideTabBar />
+                        <Scene key="webViewPage" component={WebViewPage} title="WebViewPage" hideNavBar hideTabBar />
+                        <Scene key="search" component={Search} title="Search" direction="horizontal" hideNavBar hideTabBar />
+                        <Scene key="rankings" component={Rankings} title="排行榜" hideNavBar hideTabBar />
+                        <Scene key="camera" component={Camera} title="test摄像头" hideNavBar hideTabBar />
+                        <Scene key="cameraRes" component={CameraRes} title="摄像头扫描结果" hideNavBar hideTabBar />
+                    </Scene>
                     <Scene key="error" component={Error} />
-					<Scene key="other" component={Other} />
-				</Scene>
-			</RouterWithRedux >
-		)
-	}
+                    <Scene key="other" component={Other} />
+                </Scene>
+            </RouterWithRedux >
+        )
+    }
 }
 
 export default Root;

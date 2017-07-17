@@ -9,6 +9,10 @@ import {
 } from 'react-native';
 
 import LSwiper from 'react-native-swiper';
+import {LazyloadView} from 'react-native-lazyload';
+
+import CacheImage from './cacheImage';
+
 const W = Dimensions.get('window').width;
 const H = Dimensions.get('window').height;
 
@@ -21,11 +25,18 @@ export default class Swiper extends Component {
     renderSwiper(list) {
         return list.map((value, i) => {
             return (
-                <TouchableOpacity key={i} style={styles.container} onPress={() => {
-                    this.props.onPress && this.props.onPress(value.imgLink);
-                }}>
-                    <Image  source={{uri: value.img}}  style={[styles.image,{height: this.props.height || 200}]}  />
-                </TouchableOpacity>
+                <LazyloadView key={i} style={{flex: 1,}} host={this.props.host || ''}>
+                    <TouchableOpacity activeOpacity={0.9} style={styles.container} onPress={() => {
+                        this.props.onPress && this.props.onPress(value.imgLink);
+                    }}>
+                        <CacheImage
+                            cacheNeed
+                            host={this.props.host || ''}
+                            source={{uri: value.img}}
+                            style={[styles.image,{height: this.props.height || 200}]}
+                        />
+                    </TouchableOpacity>
+                </LazyloadView>
             );
         });
     }
@@ -37,13 +48,13 @@ export default class Swiper extends Component {
             <LSwiper 
                 width={this.props.width || W}
                 autoplayTimeout = {this.props.autoplayTimeout || 2}
-                autoplay = {this.props.autoplay || true}
-                showButtons = {this.props.showButtons || true}
+                autoplay = {this.props.autoplay || false}
+                showButtons = {this.props.showButtons || false}
                 height = {this.props.height || 200}
-                paginationStyle = {this.props.paginationStyle || styles.pagination}
+                paginationStyle = {[this.props.paginationStyle || styles.pagination]}
                 {...this.props}
             >
-            {content}
+                {content}
             </LSwiper>
         );
     }

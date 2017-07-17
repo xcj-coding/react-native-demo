@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, PixelRatio } from 'react-native';
 
-import DYcommon from '../common/DYcommon';
+import DYcommon from '../common/dyCommon';
 
 export default class SearchHeader extends Component {
 	constructor(props) {

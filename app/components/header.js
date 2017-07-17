@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     StatusBar,
     StyleSheet,
@@ -7,11 +7,12 @@ import {
     View,
     Dimensions,
     TextInput,
+    ScrollView,
     TouchableOpacity
-} from 'react-native'; 
+} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Actions} from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 
 const W = Dimensions.get('window').width;
 
@@ -21,9 +22,9 @@ class Header extends Component {
     }
 
     renderLeft() {
-        const { leftType, leftCallback, transparent=false } = this.props;
+        const {leftType, leftCallback, transparent = false} = this.props;
         const type = leftType || 'default';
-        const color = transparent ? 'white': 'gray';
+        const color = transparent ? 'white' : 'gray';
         const callback = () => {
             if (typeof leftCallback === 'function') {
                 leftCallback();
@@ -32,20 +33,20 @@ class Header extends Component {
         switch (type) {
             case 'back':
                 return (
-                    <TouchableOpacity style={styles.arrow} onPress={() => {callback();Actions.pop();}}>
-                        <Icon name="ios-arrow-back" size={25} color={color}/>
+                    <TouchableOpacity style={styles.arrow} onPress={() => { callback(); Actions.pop(); } }>
+                        <Icon name="ios-arrow-back" size={25} color={color} />
                     </TouchableOpacity>
                 );
             case 'list':
                 return (
                     <TouchableOpacity style={styles.arrow} onPress={callback}>
-                        <Icon name="ios-list-box" size={25} color={color}/>
+                        <Icon name="ios-list-box" size={25} color={color} />
                     </TouchableOpacity>
                 );
             case 'qrcode':
                 return (
-                    <TouchableOpacity style={styles.arrow} onPress={callback}>
-                        <Icon name="md-qr-scanner" size={25} color={color}/>
+                    <TouchableOpacity style={styles.arrow} onPress={() => { callback(); Actions.camera(); } }>
+                        <Icon name="md-qr-scanner" size={25} color={color} />
                     </TouchableOpacity>
                 );
             default:
@@ -56,9 +57,9 @@ class Header extends Component {
     }
 
     renderRight() {
-        const { rightType, rightCallback, transparent=false } = this.props;
+        const {rightType, rightValue, rightCallback, transparent = false} = this.props;
         const type = rightType || 'default';
-        const color = transparent ? 'white': 'gray';
+        const color = transparent ? 'white' : 'gray';
         const callback = () => {
             if (typeof rightCallback === 'function') {
                 rightCallback();
@@ -68,25 +69,33 @@ class Header extends Component {
             case 'notice':
                 return (
                     <TouchableOpacity style={styles.rightDefault} onPress={callback}>
-                        <Icon name="ios-chatboxes" size={25} color={color}/>
+                        <Icon name="ios-chatboxes" size={25} color={color} />
                     </TouchableOpacity>
                 );
             case 'list-1':
                 return (
                     <TouchableOpacity style={styles.rightDefault} onPress={callback}>
-                        <Icon name="ios-list-box-outline" size={25} color={color}/>
+                        <Icon name="ios-list-box-outline" size={25} color={color} />
                     </TouchableOpacity>
                 );
             case 'list-2':
                 return (
                     <TouchableOpacity style={styles.rightDefault} onPress={callback}>
-                        <Icon name="ios-keypad-outline" size={25} color={color}/>
+                        <Icon name="ios-keypad-outline" size={25} color={color} />
                     </TouchableOpacity>
                 );
             case 'share':
                 return (
                     <TouchableOpacity style={styles.rightDefault} onPress={callback}>
-                        <Icon name="md-share-alt" size={25} color={color}/>
+                        <Icon name="md-share-alt" size={25} color={color} />
+                    </TouchableOpacity>
+                );
+            case 'text':
+                return (
+                    <TouchableOpacity style={styles.rightDefault} onPress={callback}>
+                        <Text style={{ flex: 1, color: color, lineHeight: 40, }}>
+                            {rightValue}
+                        </Text>
                     </TouchableOpacity>
                 );
             default:
@@ -97,7 +106,8 @@ class Header extends Component {
     }
 
     renderMiddle() {
-        const { middleType, middleValue='', middleCallback } = this.props;
+        const {middleType, middleValue = '', middleCallback, transparent = false} = this.props;
+        const color = transparent ? 'white' : 'gray';
         const type = middleType || 'search';
         const callback = () => {
             if (typeof middleCallback === 'function') {
@@ -107,14 +117,15 @@ class Header extends Component {
         switch (type) {
             case 'search':
                 return (
-                    <TouchableOpacity style={styles.search} onPress={callback}>
-                        <TextInput style= {{flex: 1, fontSize: 14, paddingLeft: 10}} placeholder='搜索商品'/>
+                    <TouchableOpacity activeOpacity={0.5} style={styles.search} onPress={callback}>
+                        <Icon name="ios-search" size={24} color={color} style={{width: 25,}} />
+                        <Text style={{color: color, fontSize: 15}}>{middleValue}</Text>
                     </TouchableOpacity>
                 );
             case 'text':
                 return (
                     <View style={styles.middle}>
-                        <Text style= {{flex: 1, fontSize: 16, lineHeight: 30, overflow: 'hidden'}} >
+                        <Text style={{ flex: 1, fontSize: 16, lineHeight: 30, color: color, overflow: 'hidden' }}>
                             {middleValue}
                         </Text>
                     </View>
@@ -122,16 +133,22 @@ class Header extends Component {
             case 'image':
                 return (
                     <View style={styles.middle}>
-                        <Image source={{uri: middleValue}} />
+                        <Image source={{ uri: middleValue }} />
+                    </View>
+                );
+            case 'input':
+                return (
+                    <View style={styles.middle}>
+                        {this.props.children}
                     </View>
                 );
         }
     }
 
     render() {
-        const { transparent=false } = this.props;
+        const {transparent = false} = this.props;
         const containerStyle = {
-            backgroundColor: transparent ? 'rgba(0, 0, 0, 0.1)': '#eee'
+            backgroundColor: transparent ? 'rgba(0, 0, 0, 0.1)' : '#eee'
         };
 
         const left = this.renderLeft();
@@ -171,10 +188,12 @@ const styles = StyleSheet.create({
     },
     search: {
         flex: 1,
-        paddingTop: 5,
-        paddingBottom: 5,
+        flexDirection: 'row',
+        alignItems: 'center',
         height: 30,
-        backgroundColor: '#dedede'
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        borderRadius: 10,
+        paddingHorizontal: 10,
     },
     middle: {
         flex: 1,
@@ -190,8 +209,7 @@ const styles = StyleSheet.create({
     }
 });
 
-function mapStateToProps() {
+const mapStateToProps = () => {
+};
 
-}
-
-module.exports = Header;
+export default Header;

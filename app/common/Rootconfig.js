@@ -1,4 +1,4 @@
-let RootConfig = {
+const RootConfig = {
     'nav': [
         {
             TabImage: require("../../res/tab/ic_tab_home.png"),
@@ -25,7 +25,11 @@ let RootConfig = {
             TabText: "我的",
             SelectTabImage: require("../../res/tab/ic_tab_my_press.png"),
         }
-    ]
-}
+    ],
+    'cart': {
+        'select': require('../../res/cartSelect.png'),
+        'selected': require('../../res/cartSelected.png'),
+    },
+};
 
 export default RootConfig;

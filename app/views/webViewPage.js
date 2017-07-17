@@ -10,23 +10,35 @@ import { Actions } from 'react-native-router-flux';
 /**
  * 3.项目组件引入
  */
-import { Header } from '../components/';
+import { Header, Share } from '../components/';
 /**
  * 4.项目Action引入 || 配置文件引入 || 公用方法引入
  */
-import DYcommon from '../common/DYcommon';
+import DYcommon from '../common/dyCommon';
 
 /**
  * 页面类
  */
 class Detail extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+			shareVisible: false
+		}
     }
+
+	changeShareVisible() {
+		this.setState({
+			shareVisible: !this.state.shareVisible
+		});
+	}
+
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: '#fff' }}>
-                <Header leftType={"back"} middleType={'text'} middleValue={this.props.title} rightType={"share"} />
+                <Header leftType={"back"} middleType={'text'} middleValue={this.props.title} rightType={"share"} 
+                    rightCallback = {this.changeShareVisible.bind(this)}
+                />
 
                 <WebView
                     ref={'webview'}
@@ -41,6 +53,10 @@ class Detail extends Component {
                     startInLoadingState={true}
                     scalesPageToFit={true}
                     />
+                <Share 
+					visible = {this.state.shareVisible}
+					changeShareVisible = {this.changeShareVisible.bind(this)}
+				 />
             </View>
         )
     }

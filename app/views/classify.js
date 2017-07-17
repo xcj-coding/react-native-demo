@@ -9,75 +9,133 @@ import { Text, View, Image, ListView, ScrollView, StyleSheet, PixelRatio, Toucha
  * 2.第三方组件引入
  */
 import { Actions } from 'react-native-router-flux';
+
 /**
  * 3.项目组件引入
  */
 import { Header, Swiper, ClassifyNavListItem } from '../components/';
+import CacheImage from '../components/cacheImage';
 /**
  * 4.项目Action引入 || 配置文件引入 || 公用方法引入
  */
 import * as ClassifyAction from '../actions/classifyAction';
-import DYcommon from '../common/DYcommon';
+import DYcommon from '../common/dyCommon';
 
 /**
  * 页面内使用常量
  */
 const classify_Nav_Array = [
     {
-        typeName: '分类1',
+        typeName: '热门推荐',
         typeId: 1
     },
     {
-        typeName: '分类2',
+        typeName: '潮流女装',
         typeId: 2
     },
     {
-        typeName: '分类3',
+        typeName: '品牌男装',
         typeId: 3
     },
     {
-        typeName: '分类4',
+        typeName: '个护化妆',
         typeId: 4
     },
     {
-        typeName: '分类5',
+        typeName: '家用电器',
         typeId: 5
     },
     {
-        typeName: '分类6',
+        typeName: '电脑办公',
         typeId: 6
     },
     {
-        typeName: '分类7',
+        typeName: '手机数码',
         typeId: 7
     },
     {
-        typeName: '分类8',
+        typeName: '母婴童装',
         typeId: 8
     },
     {
-        typeName: '分类9',
+        typeName: '图书',
         typeId: 9
     },
     {
-        typeName: '分类10',
+        typeName: '家居家纺',
         typeId: 10
     },
     {
-        typeName: '分类11',
+        typeName: '居家生活',
         typeId: 11
     },
     {
-        typeName: '分类12',
+        typeName: '家具建材',
         typeId: 12
     },
     {
-        typeName: '分类13',
+        typeName: '食品生鲜',
         typeId: 13
     },
     {
-        typeName: '分类14',
+        typeName: '酒水饮料',
         typeId: 14
+    },
+    {
+        typeName: '运动户外',
+        typeId: 15
+    },
+    {
+        typeName: '鞋靴箱包',
+        typeId: 16
+    },
+    {
+        typeName: '奢品礼品',
+        typeId: 17
+    },
+    {
+        typeName: '钟表珠宝',
+        typeId: 18
+    },
+    {
+        typeName: '玩具乐器',
+        typeId: 19
+    },
+    {
+        typeName: '内衣配饰',
+        typeId: 20
+    },
+    {
+        typeName: '汽车用品',
+        typeId: 21
+    },
+    {
+        typeName: '音像制品',
+        typeId: 22
+    },
+    {
+        typeName: '医药保健',
+        typeId: 23
+    },
+    {
+        typeName: '计生情趣',
+        typeId: 24
+    },
+    {
+        typeName: '全球购',
+        typeId: 25
+    },
+    {
+        typeName: '京东金融',
+        typeId: 26
+    },
+    {
+        typeName: '生活旅行',
+        typeId: 27
+    },
+    {
+        typeName: '宠物衣资',
+        typeId: 28
     },
 ];
 const classify_Home_Cont = {
@@ -85,61 +143,99 @@ const classify_Home_Cont = {
     banner: [
         {
             img: 'http://m.360buyimg.com/mobilecms/s528x180_jfs/t3961/249/486652441/45749/d4a117f2/5850fc32Nd93f0c66.jpg',
-            name: '唧唧歪歪',
+            name: '热门推广产品1',
             imgLink: 'https://www.baidu.com'
         },
         {
             img: 'http://m.360buyimg.com/mobilecms/s528x180_jfs/t3961/249/486652441/45749/d4a117f2/5850fc32Nd93f0c66.jpg',
-            name: '唧唧歪歪',
+            name: '热门推广产品2',
             imgLink: 'http://www.qq.com'
         },
         {
             img: 'http://m.360buyimg.com/mobilecms/s528x180_jfs/t3961/249/486652441/45749/d4a117f2/5850fc32Nd93f0c66.jpg',
-            name: '唧唧歪歪',
+            name: '热门推广产品3',
             imgLink: 'https://www.baidu.com'
         },
         {
             img: 'http://m.360buyimg.com/mobilecms/s528x180_jfs/t3961/249/486652441/45749/d4a117f2/5850fc32Nd93f0c66.jpg',
-            name: '唧唧歪歪',
+            name: '热门推广产品4',
             imgLink: 'https://www.baidu.com'
         },
     ],
     ItmeCont: [
         {
-            title: '热门xx',
+            title: '专场推荐',
             rankingLink: 'https://www.baidu.com',
             ItmeContList: [
                 {
                     img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t2782/149/1998822772/17899/b85cc0f3/57550c12Nba029c3e.png',
-                    name: 'xxooxxooxxooxxoo1'
+                    name: '手机'
                 },
                 {
-                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t2782/149/1998822772/17899/b85cc0f3/57550c12Nba029c3e.png',
-                    name: 'xxoo2'
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg',
+                    name: '笔记本'
                 },
                 {
-                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t2782/149/1998822772/17899/b85cc0f3/57550c12Nba029c3e.png',
-                    name: 'xxoo3'
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t2893/176/1045856721/6331/21075b96/5732d235N90395e10.jpg',
+                    name: '空调'
                 },
                 {
-                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t2782/149/1998822772/17899/b85cc0f3/57550c12Nba029c3e.png',
-                    name: 'xxoo4'
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t310/345/1515921787/4739/6bd8f7e4/543cd113Nb6638c8e.jpg',
+                    name: '收纳用品'
                 },
                 {
-                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t2782/149/1998822772/17899/b85cc0f3/57550c12Nba029c3e.png',
-                    name: 'xxoo5'
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t331/362/1515835677/3566/461716a8/543c8a67Ne129f018.jpg',
+                    name: '炒锅'
                 },
                 {
-                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t2782/149/1998822772/17899/b85cc0f3/57550c12Nba029c3e.png',
-                    name: 'xxoo6'
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t913/290/173123020/11082/e3dd8c46/5507c2e4N78755364.jpg',
+                    name: '啤酒'
                 },
                 {
-                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t2782/149/1998822772/17899/b85cc0f3/57550c12Nba029c3e.png',
-                    name: 'xxoo7'
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t3760/77/1369184438/8220/3db891c4/5822ca20N75fef3c0.jpg',
+                    name: '时尚羽绒'
                 },
                 {
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t3613/116/686810053/18767/f6c431ac/5811b9b1N1f44e702.jpg',
+                    name: '吸顶灯'
+                }
+            ]
+        },
+        {
+            title: '热门分类',
+            rankingLink: 'https://www.baidu.com',
+            ItmeContList: [
+                {
                     img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t2782/149/1998822772/17899/b85cc0f3/57550c12Nba029c3e.png',
-                    name: 'xxoo8'
+                    name: '手机'
+                },
+                {
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t340/186/1520019972/4535/fc9624f9/543c8f8aN9eab4fa0.jpg',
+                    name: '笔记本'
+                },
+                {
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t2893/176/1045856721/6331/21075b96/5732d235N90395e10.jpg',
+                    name: '空调'
+                },
+                {
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t310/345/1515921787/4739/6bd8f7e4/543cd113Nb6638c8e.jpg',
+                    name: '收纳用品'
+                },
+                {
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t331/362/1515835677/3566/461716a8/543c8a67Ne129f018.jpg',
+                    name: '炒锅'
+                },
+                {
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t913/290/173123020/11082/e3dd8c46/5507c2e4N78755364.jpg',
+                    name: '啤酒'
+                },
+                {
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t3760/77/1369184438/8220/3db891c4/5822ca20N75fef3c0.jpg',
+                    name: '时尚羽绒'
+                },
+                {
+                    img: 'http://m.360buyimg.com/mobile/s100x100_jfs/t3613/116/686810053/18767/f6c431ac/5811b9b1N1f44e702.jpg',
+                    name: '吸顶灯'
                 }
             ]
         }
@@ -156,7 +252,7 @@ class ClassifyHomeCont extends Component {
     render() {
         return (
             <View>
-                <Text>请求刷新{this.props.typeId}</Text>
+                <Text>分类类型id：{this.props.typeId}</Text>
 
                 <Swiper width={DYcommon.window.width - 90} height={100} list={classify_Home_Cont.banner} onPress={(data) => {
                     Actions.webViewPage(data);
@@ -171,7 +267,7 @@ class ClassifyHomeCont extends Component {
                             <View key={i}>
                                 <View style={{ flex: 1, flexDirection: 'row', marginTop: 10, marginBottom: 10, marginRight: 5, }}>
                                     <Text style={{ flex: 4, fontWeight: 'bold', fontSize: 12, color: '#232326' }}>{item.title}</Text>
-                                    <Text onPress={() => { alert(item.rankingLink) } } style={{ flex: 1, textAlign: 'right', fontSize: 12, color: '#848689' }}>排行榜></Text>
+                                    <Text onPress={() => { Actions.rankings() } } style={{ flex: 1, textAlign: 'right', fontSize: 12, color: '#848689' }}>排行榜></Text>
                                 </View>
                                 <View style={{ backgroundColor: '#fff' }}>
                                     {
@@ -181,7 +277,7 @@ class ClassifyHomeCont extends Component {
                                             renderRow={(rowData) => {
                                                 return (
                                                     <TouchableOpacity style={styles.row} onPress={() => { alert(rowData.name) } }>
-                                                        <Image style={{ width: 60, height: 60 }} source={{ uri: rowData.img }} />
+                                                        <CacheImage cacheNeed style={{ width: 60, height: 60 }} source={{ uri: rowData.img }} />
                                                         <Text numberOfLines={1} onPress={() => { alert(rowData.name) } }>{rowData.name}</Text>
                                                     </TouchableOpacity>
                                                 )
@@ -201,12 +297,9 @@ class ClassifyHomeCont extends Component {
 class Classify extends Component {
     constructor(props) {
         super(props)
-        let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
         this.state = {
-            dataListViewTest: ds.cloneWithRows(classify_Nav_Array),
             initTypeId: 1
         }
-        console.log(this.props)
     }
     classifyTest(data) {
         this.props.classifyTest(data)
@@ -219,7 +312,8 @@ class Classify extends Component {
     render() {
         return (
             <View style={{ backgroundColor: '#f3f5f7' }}>
-                <Header leftType={"qrcode"} rightType={"notice"} title='斗鱼商城' />
+                <Header leftType="qrcode" rightType="notice" middleValue="请输入搜索内容" middleCallback={Actions.search} />
+
                 <View style={{ flexDirection: "row", marginTop: 60, }}>
                     <ScrollView style={{ marginRight: 10, width: 70, height: DYcommon.window.height - 110, backgroundColor: '#fff' }}>
                         {
@@ -228,6 +322,7 @@ class Classify extends Component {
                             })
                         }
                     </ScrollView>
+                    
                     <ScrollView style={{ width: DYcommon.window.width - 90, height: DYcommon.window.height - 110 }}>
                         <ClassifyHomeCont typeId={this.state.initTypeId} />
                     </ScrollView>

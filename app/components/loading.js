@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
 
-import DYcommon from '../common/DYcommon';
+import DYcommon from '../common/dyCommon';
 
 export default class Loading extends Component {
     render() {

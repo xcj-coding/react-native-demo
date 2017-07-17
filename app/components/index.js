@@ -10,5 +10,24 @@ import HotGoods from './hotGoods';
 import Swiper from './swiper';
 import IconList from './iconList';
 import VideoPlayer from './videoPlayer';
+import Share from './share';
+import TestDatePicker from './testDatePicker';
+import ArticleItem from './articleItem';
+import ListItem from './listItem';
 
-export {SearchHeader, HomeViewItem, Loading, ClassifyNavListItem, NoContent, Header, HotGoods, Swiper, IconList, VideoPlayer};
+export {
+    SearchHeader,
+    HomeViewItem,
+    Loading,
+    ClassifyNavListItem,
+    NoContent,
+    Header,
+    HotGoods,
+    Swiper,
+    IconList,
+    VideoPlayer,
+    TestDatePicker,
+    Share,
+    ArticleItem,
+    ListItem,
+  };

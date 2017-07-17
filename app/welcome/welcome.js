@@ -1,9 +1,7 @@
 import { Component } from 'react';
 import { Dimensions, Image, InteractionManager, View ,Animated} from 'react-native';
 
-import DYcommon from '../common/DYcommon';
-
-import AppMain from '../views/appMain';
+import DYcommon from '../common/dyCommon';
 
 class Welcome extends Component {
     constructor(props) {
@@ -33,7 +31,7 @@ class Welcome extends Component {
                     transform: [{ scale: this.state.bounceValue }]
                 }}
                 source={require('../../res/welcome.jpg')}
-                />
+            />
         );
     }
 }

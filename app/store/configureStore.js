@@ -12,7 +12,7 @@ var middlewareWrapper = applyMiddleware(thunk);
 
 var createDYStore = middlewareWrapper(createStore);
 
-function configureStore(onComplete) {
+function configureStore(onComplete: ?() => void) {
     const rehydrator = autoRehydrate();
     const store = rehydrator(createDYStore)(reducers);
 
